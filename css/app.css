@@ -44,7 +44,6 @@ img.emoji {
   margin: 15px; }
   .app-nav a {
     color: #5badf0;
-    text-transform: capitalize;
     padding: 6px 10px; }
   .app-nav .active {
     background-color: #5badf0;
@@ -112,7 +111,7 @@ main.index {
   main.index .article-title {
     margin: 0;
     padding-top: 30px;
-    text-transform: capitalize; }
+  }
   main.index .article-date {
     color: #aaa; }
   main.index .page-nav {
@@ -137,7 +136,7 @@ main.archive {
   main.archive .article-title {
     margin: 0;
     font-size: 1.2rem;
-    text-transform: capitalize; }
+   }
   main.archive .article-meta {
     padding-left: 30px; }
     main.archive .article-meta .article-date {
@@ -190,7 +189,6 @@ main.post {
   main.post .article-title {
     margin: 0;
     text-align: center;
-    text-transform: capitalize;
     padding-top: 30px; }
   main.post .article-date {
     text-align: center;
@@ -255,7 +253,7 @@ main.post {
     margin: 15px;
     color: #EB298C;
     font-style: italic;
-    text-transform: capitalize; }
+   }
 
 .code-block, .article-entry pre, .article-entry .highlight {
   background: #2d2d2d;
