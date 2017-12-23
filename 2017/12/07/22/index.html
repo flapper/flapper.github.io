@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>vi 명령어 | 코딩공작소</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/app.css">
+  <!-- <link rel='stylesheet' href='http://fonts.useso.com/css?family=Source+Code+Pro'> -->
+  
+</head>
+
+<body>
+  <nav class="app-nav">
+  
+    
+      <a href="/.">home</a>
+    
+  
+    
+      <a href="/archives">archive</a>
+    
+  
+</nav>
+
+  <main class="post">
+  <article>
+  <h1 class="article-title">
+    <a href="/2017/12/07/22/">vi 명령어</a>
+  </h1>
+
+  <section class="article-meta">
+    <p class="article-date">December 07 2017</p>
+  </section>
+
+  <section class="article-entry">
+    <ul>
+<li>자주쓰는 명령</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>이동</td>
+<td>h j k l</td>
+</tr>
+<tr>
+<td>현재위치(커서 왼쪽) 편집</td>
+<td>i  (커서 오른쪽 a)</td>
+</tr>
+<tr>
+<td>저장후 나가기</td>
+<td>:qw</td>
+</tr>
+<tr>
+<td>현재 줄에서 수정한 내용만 취소</td>
+<td>u</td>
+</tr>
+<tr>
+<td>편집 무시하고 나가기</td>
+<td>:q!</td>
+</tr>
+<tr>
+<td>한줄 카피</td>
+<td>yy</td>
+</tr>
+<tr>
+<td>현재위치 한줄 붙여넣기</td>
+<td>대문자 P (커서 아래 p)</td>
+</tr>
+<tr>
+<td>한단어 삭제</td>
+<td>dw (단어의 시작문자에서)</td>
+</tr>
+<tr>
+<td>한단어 오른쪽 이동</td>
+<td>w (왼쪽 이동 b)</td>
+</tr>
+<tr>
+<td>첫줄,마지막줄,7째줄</td>
+<td>gg, G, 7G or :7</td>
+</tr>
+<tr>
+<td>블럭선택</td>
+<td>v</td>
+</tr>
+<tr>
+<td>컬럼단위 블럭복사</td>
+<td>Ctrl+v</td>
+</tr>
+<tr>
+<td>블럭선택후 복사</td>
+<td>y</td>
+</tr>
+<tr>
+<td>블럭선택후 잘라내기</td>
+<td>d</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>줄번호</li>
+</ul>
+<ol>
+<li>$ vi ~/.vimrc </li>
+<li>set number 를 추가한다. (set nu 도 됨)<br><img src="/files/358" alt="image.png"></li>
+</ol>
+<ul>
+<li>그외 수정후 로그아웃하지 않고 바로 적용<br># source /etc/bashrc</li>
+</ul>
+
+  </section>
+</article>
+
+  <div class="sharing grid">
+  <section class="profile grid-item grid">
+    <img class="avatar" src="/images/avatar.png" alt="avatar" />
+    <div class="grid-item">
+      <p class="title"> 코딩공작소 </p>
+      <p class="subtitle"> 코딩에 관한 여러가지 방법 모음 : 실제로 설정하면서 해결/처리한 결과 입니다 </p>
+    <div>
+  </section>
+
+  <section class="share-btns">
+    <!-- <p> share it if you like it~ </p> -->
+    <a
+  class="twitter-share-button"
+  data-size="large"
+  data-via="DrakeLeung"
+  href="https://twitter.com/intent/tweet?text=>
+<li>자주쓰는 명령</li>
+<"
+>
+  Tweet
+</a>
+
+<script>
+  window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  js.async = true;
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));
+</script>
+
+  </section>
+</div>
+
+
+  
+    
+<section class="article-comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+<script>
+  var disqus_shortname = 'flapper_jinn';
+  
+  var disqus_url = 'https://flapper.github.io/2017/12/07/22/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+  
+</main>
+
+</body>
+</html>

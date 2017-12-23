@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>브라우저 우클릭/복사방지 해제 | 코딩공작소</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/app.css">
+  <!-- <link rel='stylesheet' href='http://fonts.useso.com/css?family=Source+Code+Pro'> -->
+  
+</head>
+
+<body>
+  <nav class="app-nav">
+  
+    
+      <a href="/.">home</a>
+    
+  
+    
+      <a href="/archives">archive</a>
+    
+  
+</nav>
+
+  <main class="post">
+  <article>
+  <h1 class="article-title">
+    <a href="/2017/12/22/79/">브라우저 우클릭/복사방지 해제</a>
+  </h1>
+
+  <section class="article-meta">
+    <p class="article-date">December 22 2017</p>
+  </section>
+
+  <section class="article-entry">
+    <ul>
+<li><p>우클릭</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javascript: function naver(q)&#123; void(z=q.body.appendChild(q.createElement(&apos;script&apos;))); void(z.language=&apos;javascript&apos;); void(z.type=&apos;text/javascript&apos;); void(z.src=&apos;http://userscripts.org/scripts/source/61326.user.js&apos;);&#125; function selfw(w) &#123; try&#123;naver(w.document);&#125; catch(e)&#123;&#125; for (var i =0; i &lt;w.frames.length; i++) &#123; try&#123; selfw(w.frames[i]); &#125; catch(e)&#123;&#125; &#125; &#125; selfw(self);(function() &#123; var e, i, all; document.onselectstart = null; document.oncontextmenu = null; all = document.getElementsByTagName(&quot;*&quot;); for (i = 0; i &lt; all.length; i += 1) &#123; e = all[i]; e.onselectstart = null; e.oncontextmenu = null; &#125; &#125;)();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>복사</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javascript: function naver(q)&#123; void(z=q.body.appendChild(q.createElement(&apos;script&apos;))); void(z.language=&apos;javascript&apos;); void(z.type=&apos;text/javascript&apos;); void(z.src=&apos;http://userscripts.org/scripts/source/61326.user.js&apos;);&#125; function selfw(w) &#123; try&#123;naver(w.document);&#125; catch(e)&#123;&#125; for (var i =0; i &lt;w.frames.length; i++) &#123; try&#123; selfw(w.frames[i]); &#125; catch(e)&#123;&#125; &#125; &#125; selfw(self);(function() &#123; var e, i, all; document.onselectstart = null; document.oncontextmenu = null; all = document.getElementsByTagName(&quot;*&quot;); for (i = 0; i &lt; all.length; i += 1) &#123; e = all[i]; e.onselectstart = null; e.oncontextmenu = null; &#125; &#125;)();</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+  </section>
+</article>
+
+  <div class="sharing grid">
+  <section class="profile grid-item grid">
+    <img class="avatar" src="/images/avatar.png" alt="avatar" />
+    <div class="grid-item">
+      <p class="title"> 코딩공작소 </p>
+      <p class="subtitle"> 코딩에 관한 여러가지 방법 모음 : 실제로 설정하면서 해결/처리한 결과 입니다 </p>
+    <div>
+  </section>
+
+  <section class="share-btns">
+    <!-- <p> share it if you like it~ </p> -->
+    <a
+  class="twitter-share-button"
+  data-size="large"
+  data-via="DrakeLeung"
+  href="https://twitter.com/intent/tweet?text=>
+<li><p>우클릭</p>
+<fi"
+>
+  Tweet
+</a>
+
+<script>
+  window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  js.async = true;
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));
+</script>
+
+  </section>
+</div>
+
+
+  
+    
+<section class="article-comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+<script>
+  var disqus_shortname = 'flapper_jinn';
+  
+  var disqus_url = 'https://flapper.github.io/2017/12/22/79/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+  
+</main>
+
+</body>
+</html>

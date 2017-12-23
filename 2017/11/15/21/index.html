@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>MacOS 에서 CentOS USB만들기 | 코딩공작소</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/app.css">
+  <!-- <link rel='stylesheet' href='http://fonts.useso.com/css?family=Source+Code+Pro'> -->
+  
+</head>
+
+<body>
+  <nav class="app-nav">
+  
+    
+      <a href="/.">home</a>
+    
+  
+    
+      <a href="/archives">archive</a>
+    
+  
+</nav>
+
+  <main class="post">
+  <article>
+  <h1 class="article-title">
+    <a href="/2017/11/15/21/">MacOS 에서 CentOS USB만들기</a>
+  </h1>
+
+  <section class="article-meta">
+    <p class="article-date">November 15 2017</p>
+  </section>
+
+  <section class="article-entry">
+    <h2 id="iso-이미지-다운로드"><a href="#iso-이미지-다운로드" class="headerlink" title="iso 이미지 다운로드"></a>iso 이미지 다운로드</h2><ul>
+<li><a href="https://www.centos.org/download/" target="_blank" rel="noopener">https://www.centos.org/download/</a></li>
+</ul>
+<h2 id="iso-를-img-로-변환-1-2분-소요"><a href="#iso-를-img-로-변환-1-2분-소요" class="headerlink" title="iso 를 img 로 변환 (1~2분 소요)"></a>iso 를 img 로 변환 (1~2분 소요)</h2><ul>
+<li>$ hdiutil convert -format UDRW -o target.img CentOS-7.0-1406-x86_64-Everything.iso</li>
+</ul>
+<h2 id="USB-disk-이름-확인"><a href="#USB-disk-이름-확인" class="headerlink" title="USB disk 이름 확인."></a>USB disk 이름 확인.</h2><ul>
+<li>$ diskutil list</li>
+</ul>
+<h2 id="unmount-수행"><a href="#unmount-수행" class="headerlink" title="unmount 수행"></a>unmount 수행</h2><ul>
+<li>$ diskutil unmountDisk /dev/{디스크명}<br>예 :</li>
+<li>$ diskutil unmountDisk /dev/disk2</li>
+</ul>
+<h2 id="복사-오래-걸림-약-40분"><a href="#복사-오래-걸림-약-40분" class="headerlink" title="복사 (오래 걸림, 약 40분)"></a>복사 (오래 걸림, 약 40분)</h2><p> <em>bs는 한번에 읽어들일 사이즈를 의미</em></p>
+<ul>
+<li>그냥 $ sudo dd if=target.img.dmg of=/dev/{디스크명} bs=1m 하거나</li>
+<li>$ brew install pv (Ubuntu는 sudo apt-get install pv) 후 (진행상황 확인 위해)</li>
+<li>$ sudo dd if=target.img.dmg | pv | sudo dd of=/dev/{디스크명} bs=1m<blockquote>
+<p>만약 error dd: Invalid number ‘1m’ 에러 발생시 1m 을 1M 으로</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="USB-추출"><a href="#USB-추출" class="headerlink" title="USB 추출"></a>USB 추출</h2><p>아래 이미지에서 추출 선택하거나<br><img src="/files/321" alt="image.png"></p>
+<p>아래 명령으로 수동 추출한다</p>
+<ul>
+<li>$ diskutil eject /dev/disk2</li>
+</ul>
+<p>+요세미티 부터는 C 글쇠를 누르고 있으면, USB나 CD∙DVD매체로 부트할 수 있습니다. </p>
+<h2 id="부록-다른-디스크로-복사하기"><a href="#부록-다른-디스크로-복사하기" class="headerlink" title="부록 : 다른 디스크로 복사하기"></a>부록 : 다른 디스크로 복사하기</h2><ul>
+<li>$ sudo dd if=/dev/disk2 of=~/Desktop/raspberrypi.dmg</li>
+<li>다른 Usb 삽입</li>
+<li>unmount 수행</li>
+<li>format 방식지정 (옵션)<ul>
+<li>$ sudo newfs_msdos -F 16 /dev/disk2</li>
+</ul>
+</li>
+<li>$ sudo dd if=~/Desktop/raspberrypi.dmg of=/dev/disk2</li>
+</ul>
+
+  </section>
+</article>
+
+  <div class="sharing grid">
+  <section class="profile grid-item grid">
+    <img class="avatar" src="/images/avatar.png" alt="avatar" />
+    <div class="grid-item">
+      <p class="title"> 코딩공작소 </p>
+      <p class="subtitle"> 코딩에 관한 여러가지 방법 모음 : 실제로 설정하면서 해결/처리한 결과 입니다 </p>
+    <div>
+  </section>
+
+  <section class="share-btns">
+    <!-- <p> share it if you like it~ </p> -->
+    <a
+  class="twitter-share-button"
+  data-size="large"
+  data-via="DrakeLeung"
+  href="https://twitter.com/intent/tweet?text= id="iso-이미지-다운로드"><"
+>
+  Tweet
+</a>
+
+<script>
+  window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  js.async = true;
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));
+</script>
+
+  </section>
+</div>
+
+
+  
+    
+<section class="article-comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+<script>
+  var disqus_shortname = 'flapper_jinn';
+  
+  var disqus_url = 'https://flapper.github.io/2017/11/15/21/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+  
+</main>
+
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>macos 최대절전 | 코딩공작소</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/app.css">
+  <!-- <link rel='stylesheet' href='http://fonts.useso.com/css?family=Source+Code+Pro'> -->
+  
+</head>
+
+<body>
+  <nav class="app-nav">
+  
+    
+      <a href="/.">home</a>
+    
+  
+    
+      <a href="/archives">archive</a>
+    
+  
+</nav>
+
+  <main class="post">
+  <article>
+  <h1 class="article-title">
+    <a href="/2017/08/19/42/">macos 최대절전</a>
+  </h1>
+
+  <section class="article-meta">
+    <p class="article-date">August 19 2017</p>
+  </section>
+
+  <section class="article-entry">
+    <p>0 - 슬립 모드, 램에 전원이 인가된 상태로 있으며 빠르게 동작한다.<br>1 - 램에 있던 내용은 디스크에 쓰여지고, 램에도 전원히 완전히 끊긴다. 하이버네이션/복원 과정에서 램의 내용을 디스크에 쓰고, 디스크의 내용을 램에 쓰는 작업을 하게 되며, 당연히 느리다.<br>3 - 디폴트 모드. (2005년 가을 이후 모델은 다 이렇단다) 램의 내용이 디스크에 쓰여지는 것은 1번과 같으나, 램에는 전원이 인가된 상태로 있어 복원 과정은 빠르게 이루어진다. 이 상태에서 배터리가 다 떨어지게 되면 1번 상태와 같은 상태로 돌입하게 된다. 물론 그렇게 되면 복원 과정이 이루어지는 속도는 1번과 같게 된다.<br>5 - 1번하고 같으나, 이 경우 보안 가상 메모리(secure virtual memory)라는 것을 사용한다. 자세한 것은 모르겠지만 메모리의 내용을 디스크에 쓸 때, 그 메모리의 이미지 파일을 누군가 빼돌려서 분석할 수 없게 하는 기능이 아닐까 추측해본다.<br>7 - 이것 또한 보안 가상 메모리를 사용하는 것을 빼면 3번하고 동일하다.</p>
+<p>그러므로 다음과 같이 하이버네이션 모드를 변경하면 좀 더 빠르게 슬립모드에 들어가는 맥북을 볼 수 있을 것이다 :</p>
+<pre><code>sudo pmset -a hibernatemode 0
+</code></pre><p>출처: <a href="http://kenial.tistory.com/1" target="_blank" rel="noopener">http://kenial.tistory.com/1</a> [GhostOnNetwork]</p>
+<ul>
+<li><p>뚜껑닫고 쓰기<br><a href="http://macnews.tistory.com/131" target="_blank" rel="noopener">http://macnews.tistory.com/131</a></p>
+</li>
+<li><p>sleep 모드 방해 확인<br>pmset -g assertions<br><a href="http://www.macworld.com/article/1168151/software-utilities/find-out-whats-keeping-your-mac-awake.html" target="_blank" rel="noopener">http://www.macworld.com/article/1168151/software-utilities/find-out-whats-keeping-your-mac-awake.html</a></p>
+</li>
+<li>apply_turnoff.sh<br><a href="https://gist.github.com/minhoryang/4c7b56324c5f2e5a8694" target="_blank" rel="noopener">https://gist.github.com/minhoryang/4c7b56324c5f2e5a8694</a></li>
+</ul>
+
+  </section>
+</article>
+
+  <div class="sharing grid">
+  <section class="profile grid-item grid">
+    <img class="avatar" src="/images/avatar.png" alt="avatar" />
+    <div class="grid-item">
+      <p class="title"> 코딩공작소 </p>
+      <p class="subtitle"> 코딩에 관한 여러가지 방법 모음 : 실제로 설정하면서 해결/처리한 결과 입니다 </p>
+    <div>
+  </section>
+
+  <section class="share-btns">
+    <!-- <p> share it if you like it~ </p> -->
+    <a
+  class="twitter-share-button"
+  data-size="large"
+  data-via="DrakeLeung"
+  href="https://twitter.com/intent/tweet?text=0 - 슬립 모드, 램에 전원이 인가"
+>
+  Tweet
+</a>
+
+<script>
+  window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  js.async = true;
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));
+</script>
+
+  </section>
+</div>
+
+
+  
+    
+<section class="article-comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+<script>
+  var disqus_shortname = 'flapper_jinn';
+  
+  var disqus_url = 'https://flapper.github.io/2017/08/19/42/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+  
+</main>
+
+</body>
+</html>

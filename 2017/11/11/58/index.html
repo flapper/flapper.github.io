@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>ajax 호출 예제 | 코딩공작소</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/app.css">
+  <!-- <link rel='stylesheet' href='http://fonts.useso.com/css?family=Source+Code+Pro'> -->
+  
+</head>
+
+<body>
+  <nav class="app-nav">
+  
+    
+      <a href="/.">home</a>
+    
+  
+    
+      <a href="/archives">archive</a>
+    
+  
+</nav>
+
+  <main class="post">
+  <article>
+  <h1 class="article-title">
+    <a href="/2017/11/11/58/">ajax 호출 예제</a>
+  </h1>
+
+  <section class="article-meta">
+    <p class="article-date">November 11 2017</p>
+  </section>
+
+  <section class="article-entry">
+    <p>기존 2개 인자에서 3개 또는 1개로(첫번째만 쓰임)<br>기존 complete 에서 success 로 setting 속성 변경<br><a href="http://api.jquery.com/jquery.ajax/" target="_blank" rel="noopener">http://api.jquery.com/jquery.ajax/</a> 에서 compelete 과 success 참고</p>
+<h2 id="기존-방법"><a href="#기존-방법" class="headerlink" title="기존 방법"></a>기존 방법</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">doSearch</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">중략...</span><br><span class="line">       $.ajax(&#123;</span><br><span class="line">           url: productServiceUrl,</span><br><span class="line">           type: <span class="string">"POST"</span>,</span><br><span class="line">           dataType: <span class="string">"xml"</span>,</span><br><span class="line">           data: soapMsg,</span><br><span class="line">           complete: doSearchReturn,</span><br><span class="line">           contentType: <span class="string">"text/xml; charset=\"utf-8\""</span></span><br><span class="line">       &#125;);</span><br><span class="line">중략...</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">doSearchReturn</span>(<span class="params">xmlHttpRequest, status</span>) </span>&#123;</span><br><span class="line">       $(xmlHttpRequest.responseText)</span><br><span class="line">       .find(<span class="string">'GetWebServiceResult'</span>)</span><br><span class="line">       .each(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">           bErr = $(<span class="keyword">this</span>).find(<span class="string">'bErr'</span>).text();</span><br><span class="line">           sMsg = $(<span class="keyword">this</span>).find(<span class="string">'sMsg'</span>).text();</span><br><span class="line"></span><br><span class="line">           <span class="keyword">if</span> (bErr == <span class="string">'true'</span>) &#123;</span><br><span class="line">               _alert(sMsg);</span><br><span class="line">               <span class="keyword">return</span>;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br><span class="line"></span><br><span class="line">       <span class="keyword">var</span> arr_length = <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">중략...</span><br></pre></td></tr></table></figure>
+<h2 id="개정-예제"><a href="#개정-예제" class="headerlink" title="개정 예제"></a>개정 예제</h2><p>chkAjaxError 에 대한 정의는 다른 모듈에 있다<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getUnreported</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> sHead = <span class="string">'SM_Unreported'</span>; <span class="comment">/*미보고자*/</span></span><br><span class="line">    <span class="keyword">var</span> UserIDX = <span class="string">'&lt;%=Session["idxidx"]%&gt;'</span>;</span><br><span class="line">    <span class="keyword">var</span> sParam = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line">    <span class="keyword">var</span> datepicker = $(<span class="string">'#datepicker'</span>).val();</span><br><span class="line"></span><br><span class="line">    datepicker = datepicker.replace(<span class="string">"-"</span>, <span class="string">""</span>);</span><br><span class="line">    datepicker = datepicker.replace(<span class="string">"-"</span>, <span class="string">""</span>);</span><br><span class="line"></span><br><span class="line">    sParam[<span class="number">0</span>] = <span class="string">'&lt;%=Session["dist"]%&gt;'</span>;</span><br><span class="line">    sParam[<span class="number">1</span>] = <span class="string">'&lt;%=Session["brch"]%&gt;'</span>;</span><br><span class="line">    sParam[<span class="number">2</span>] = <span class="string">'&lt;%=Session["org"]%&gt;'</span>;</span><br><span class="line">    sParam[<span class="number">3</span>] = <span class="string">'&lt;%=Session["gubun"]%&gt;'</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> pdata = &#123; <span class="string">'sHead'</span>: sHead, <span class="string">'UserIDX'</span>: UserIDX, <span class="string">'lvl'</span>: lvl, <span class="string">'sParam'</span>: sParam &#125;;</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        url: urlJson,</span><br><span class="line">        type: <span class="string">"POST"</span>,</span><br><span class="line">        dataType: <span class="string">"json"</span>,</span><br><span class="line">        data: <span class="built_in">JSON</span>.stringify(pdata),</span><br><span class="line">        success: getUnreportedReturn,</span><br><span class="line">        contentType: <span class="string">"application/json; charset=utf-8"</span>,</span><br><span class="line">        error:chkAjaxError</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getUnreportedReturn</span>(<span class="params">result</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> data = $.parseJSON(result[<span class="string">'d'</span>]);</span><br><span class="line">    <span class="keyword">if</span> (data.bErr) &#123; _alert(<span class="string">'오류발생: '</span> + data.sMsg); <span class="keyword">return</span>; &#125;</span><br><span class="line">    <span class="keyword">var</span> rows = xml2json(data.Ds);</span><br><span class="line">    <span class="keyword">var</span> html = <span class="string">''</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> rows) &#123;</span><br><span class="line">        html += <span class="string">'&lt;div class="Regdt_10"&gt;'</span> + rows[i].nm + <span class="string">' ('</span> + rows[i].idnum + <span class="string">') '</span> + <span class="string">'&lt;/div&gt;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (rows == <span class="literal">false</span>) &#123;</span><br><span class="line">        html += <span class="string">'&lt;div class="Report"&gt;'</span>;</span><br><span class="line">        html += $(<span class="string">'#datepicker'</span>).val() + <span class="string">' 미보고자가 없습니다.'</span>;</span><br><span class="line">        html += <span class="string">'&lt;/div&gt;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    $(<span class="string">"#DailyList_3"</span>).empty().append(html);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+  </section>
+</article>
+
+  <div class="sharing grid">
+  <section class="profile grid-item grid">
+    <img class="avatar" src="/images/avatar.png" alt="avatar" />
+    <div class="grid-item">
+      <p class="title"> 코딩공작소 </p>
+      <p class="subtitle"> 코딩에 관한 여러가지 방법 모음 : 실제로 설정하면서 해결/처리한 결과 입니다 </p>
+    <div>
+  </section>
+
+  <section class="share-btns">
+    <!-- <p> share it if you like it~ </p> -->
+    <a
+  class="twitter-share-button"
+  data-size="large"
+  data-via="DrakeLeung"
+  href="https://twitter.com/intent/tweet?text=기존 2개 인자에서 3개 또는 1개로"
+>
+  Tweet
+</a>
+
+<script>
+  window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  js.async = true;
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));
+</script>
+
+  </section>
+</div>
+
+
+  
+    
+<section class="article-comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+<script>
+  var disqus_shortname = 'flapper_jinn';
+  
+  var disqus_url = 'https://flapper.github.io/2017/11/11/58/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+  
+</main>
+
+</body>
+</html>

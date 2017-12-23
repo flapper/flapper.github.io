@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>centos7 root 패스워드 분실 | 코딩공작소</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/app.css">
+  <!-- <link rel='stylesheet' href='http://fonts.useso.com/css?family=Source+Code+Pro'> -->
+  
+</head>
+
+<body>
+  <nav class="app-nav">
+  
+    
+      <a href="/.">home</a>
+    
+  
+    
+      <a href="/archives">archive</a>
+    
+  
+</nav>
+
+  <main class="post">
+  <article>
+  <h1 class="article-title">
+    <a href="/2017/08/06/34/">centos7 root 패스워드 분실</a>
+  </h1>
+
+  <section class="article-meta">
+    <p class="article-date">August 06 2017</p>
+  </section>
+
+  <section class="article-entry">
+    <ol>
+<li><p>증상<br># su root<br>비번 입력시 authentication failure 나와서 보니…<br>root 로 ssh, 로컬(콘솔) 모두 안됨</p>
+</li>
+<li><p>원인<br>root 비번이 바뀐 원인은 모르겠음. 다만,<br>초기 셋팅시 사용자계정(flapper)을 sudoer 에 추가하지 않았음<br>많약에 추가했다면 sudo -i 로 가능했을 수도 (아니다.. 로컬 진입도 안되었는데 ㅠ)<br><a href="http://kkamagistory.tistory.com/511" target="_blank" rel="noopener">참고링크(그냥 참고다 혹시 su 안될때 보기 위해서)</a><br><a href="https://unix.stackexchange.com/questions/116529/i-cant-login-as-root-with-su-command-but-i-can-with-ssh" target="_blank" rel="noopener">비슷한 다른링크</a></p>
+</li>
+<li><p>해결<br>콘솔에서 비번 초기화함<br><a href="http://blog.naver.com/PostView.nhn?blogId=dme1004&amp;logNo=220692886434" target="_blank" rel="noopener">http://blog.naver.com/PostView.nhn?blogId=dme1004&amp;logNo=220692886434</a></p>
+</li>
+</ol>
+<p>약간 어려운 부분은<br><code>ro =&gt; rw, rhgb quiet =&gt; init=/bin/bash 로 수정후 Ctrl+x 키를 누르자.</code></p>
+
+  </section>
+</article>
+
+  <div class="sharing grid">
+  <section class="profile grid-item grid">
+    <img class="avatar" src="/images/avatar.png" alt="avatar" />
+    <div class="grid-item">
+      <p class="title"> 코딩공작소 </p>
+      <p class="subtitle"> 코딩에 관한 여러가지 방법 모음 : 실제로 설정하면서 해결/처리한 결과 입니다 </p>
+    <div>
+  </section>
+
+  <section class="share-btns">
+    <!-- <p> share it if you like it~ </p> -->
+    <a
+  class="twitter-share-button"
+  data-size="large"
+  data-via="DrakeLeung"
+  href="https://twitter.com/intent/tweet?text=>
+<li><p>증상<br># su "
+>
+  Tweet
+</a>
+
+<script>
+  window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  js.async = true;
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));
+</script>
+
+  </section>
+</div>
+
+
+  
+    
+<section class="article-comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+<script>
+  var disqus_shortname = 'flapper_jinn';
+  
+  var disqus_url = 'https://flapper.github.io/2017/08/06/34/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+  
+</main>
+
+</body>
+</html>

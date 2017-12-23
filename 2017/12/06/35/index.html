@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>백그라운드 실행 | 코딩공작소</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/app.css">
+  <!-- <link rel='stylesheet' href='http://fonts.useso.com/css?family=Source+Code+Pro'> -->
+  
+</head>
+
+<body>
+  <nav class="app-nav">
+  
+    
+      <a href="/.">home</a>
+    
+  
+    
+      <a href="/archives">archive</a>
+    
+  
+</nav>
+
+  <main class="post">
+  <article>
+  <h1 class="article-title">
+    <a href="/2017/12/06/35/">백그라운드 실행</a>
+  </h1>
+
+  <section class="article-meta">
+    <p class="article-date">December 06 2017</p>
+  </section>
+
+  <section class="article-entry">
+    <blockquote>
+<p><a href="http://changpd.blogspot.kr/2013/04/linux-nohup-xxxsh.html" target="_blank" rel="noopener">http://changpd.blogspot.kr/2013/04/linux-nohup-xxxsh.html</a></p>
+</blockquote>
+<h2 id="기본사용법"><a href="#기본사용법" class="headerlink" title="기본사용법"></a>기본사용법</h2><p><code>nohup ./test.sh &amp;</code></p>
+<p>&amp; 만 쓰면 세션 종료시 같이 프로세스 종료됨 (현재 세션에서만 안보이게 하는 용도)</p>
+<p><code>kill -15 1234</code> 두세번 실행해보고<br>안되면<br><code>kill -9 1234</code><br><a href="https://www.lesstif.com/pages/viewpage.action?pageId=12943674" target="_blank" rel="noopener">안전한 kill 명령어 사용</a></p>
+<p>tail -f nohup.out 으로 실시간 로그 확인</p>
+<h2 id="응용"><a href="#응용" class="headerlink" title="응용"></a>응용</h2><ul>
+<li>startup.sh<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nohup node node-tele.js &amp;</span><br><span class="line">echo $! &gt; run.pid</span><br><span class="line">echo SERVER STATED!!</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><code>nohup node node-tele.js &gt; /dev/null &amp;</code> 하면 nohup.out 로그 안남김<br><code>2&gt;&amp;1</code> 추가하면 에러도 안남김 <a href="https://m.blog.naver.com/PostView.nhn?blogId=nds239&amp;logNo=10112233643&amp;proxyReferer=https%3A%2F%2Fwww.google.co.kr%2F" target="_blank" rel="noopener">참고</a></p>
+<ul>
+<li><p>shutdown.sh</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kill `cat run.pid`</span><br><span class="line">echo SERVER STOPPED!!</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>restart.sh</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">kill `cat run.pid`</span><br><span class="line">nohup node node-tele.js &amp;</span><br><span class="line">echo $! &gt; run.pid</span><br><span class="line">echo SERVER RESTATED!!</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>한줄로</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">echo -e &apos;nohup node node-tele.js &amp;\necho $! &gt; run.pid\necho SERVER STATED!!&apos; &gt; startup.sh</span><br><span class="line">echo -e &apos;kill `cat run.pid`\necho SERVER STOPPED!!&apos; &gt; shutdown.sh</span><br><span class="line">echo -e &apos;kill `cat run.pid`\nnohup node node-tele.js &amp;\necho $! &gt; run.pid\necho SERVER RESTATED!!&apos; &gt; restart.sh</span><br><span class="line">chmod +x startup.sh shutdown.sh restart.sh</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+  </section>
+</article>
+
+  <div class="sharing grid">
+  <section class="profile grid-item grid">
+    <img class="avatar" src="/images/avatar.png" alt="avatar" />
+    <div class="grid-item">
+      <p class="title"> 코딩공작소 </p>
+      <p class="subtitle"> 코딩에 관한 여러가지 방법 모음 : 실제로 설정하면서 해결/처리한 결과 입니다 </p>
+    <div>
+  </section>
+
+  <section class="share-btns">
+    <!-- <p> share it if you like it~ </p> -->
+    <a
+  class="twitter-share-button"
+  data-size="large"
+  data-via="DrakeLeung"
+  href="https://twitter.com/intent/tweet?text=ockquote>
+<p><a href"
+>
+  Tweet
+</a>
+
+<script>
+  window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  js.async = true;
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));
+</script>
+
+  </section>
+</div>
+
+
+  
+    
+<section class="article-comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+<script>
+  var disqus_shortname = 'flapper_jinn';
+  
+  var disqus_url = 'https://flapper.github.io/2017/12/06/35/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+  
+</main>
+
+</body>
+</html>

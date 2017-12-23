@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>[JS] arr[arr.length] 와 arr.push() perf 비교 | 코딩공작소</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/app.css">
+  <!-- <link rel='stylesheet' href='http://fonts.useso.com/css?family=Source+Code+Pro'> -->
+  
+</head>
+
+<body>
+  <nav class="app-nav">
+  
+    
+      <a href="/.">home</a>
+    
+  
+    
+      <a href="/archives">archive</a>
+    
+  
+</nav>
+
+  <main class="post">
+  <article>
+  <h1 class="article-title">
+    <a href="/2017/07/23/11/">[JS] arr[arr.length] 와 arr.push() perf 비교</a>
+  </h1>
+
+  <section class="article-meta">
+    <p class="article-date">July 23 2017</p>
+  </section>
+
+  <section class="article-entry">
+    <p><a href="https://jsperf.com/approaches-for-array-population/2" target="_blank" rel="noopener">여기</a> 사이트 참조하여 직접 테스트함</p>
+<ol>
+<li><p>아이폰 사파리 - push()가 7% 빠름<br><img src="/files/283" alt="e0fa55898506d3e0e67ab6f5fdd7754731c4d824e64c1f3e90466f1c3feb689a.jpg"></p>
+</li>
+<li><p>아이폰 크롬 - push()가 8% 빠름<br><img src="/files/284" alt="81960feb8a9fc0b42e682e489a2a9785f1b88250713f591fba98f5d5ca683456.jpg"></p>
+</li>
+<li><p>아이폰 WebView - push()가 15% 빠름<br><img src="/files/285" alt="89a996359725e97591d19f5e15de255cad969e8e301170ab39342a588cbc5171.jpg"></p>
+</li>
+<li><p>안드로 Samsung Internet (기본 브라우저) - push()가 37%느림<br><img src="/files/286" alt="af8275c91c619d0869919e7b32c2f4faba6351eaea43a904da8da93a6f4e1062.jpg"></p>
+</li>
+<li><p>안드로 크롬 - push()가 35% 빠름<br><a href="/files/287">a9bbb76becbbe776f209f95966b5fb7cedae4ae40380371c7d497f03a90baa66.jpg</a></p>
+</li>
+<li><p>안드로 WebView - 거의 차이 없음!<br><img src="/files/288" alt="22264a8ef48c9b223d71d2fb1701be83c80e253c60dcf09f8fbee5c55fd073e5.jpg"></p>
+</li>
+</ol>
+
+  </section>
+</article>
+
+  <div class="sharing grid">
+  <section class="profile grid-item grid">
+    <img class="avatar" src="/images/avatar.png" alt="avatar" />
+    <div class="grid-item">
+      <p class="title"> 코딩공작소 </p>
+      <p class="subtitle"> 코딩에 관한 여러가지 방법 모음 : 실제로 설정하면서 해결/처리한 결과 입니다 </p>
+    <div>
+  </section>
+
+  <section class="share-btns">
+    <!-- <p> share it if you like it~ </p> -->
+    <a
+  class="twitter-share-button"
+  data-size="large"
+  data-via="DrakeLeung"
+  href="https://twitter.com/intent/tweet?text=<a href="https://jsp"
+>
+  Tweet
+</a>
+
+<script>
+  window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  js.async = true;
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));
+</script>
+
+  </section>
+</div>
+
+
+  
+    
+<section class="article-comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+<script>
+  var disqus_shortname = 'flapper_jinn';
+  
+  var disqus_url = 'https://flapper.github.io/2017/07/23/11/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+  
+</main>
+
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>centos node 설치 | 코딩공작소</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/app.css">
+  <!-- <link rel='stylesheet' href='http://fonts.useso.com/css?family=Source+Code+Pro'> -->
+  
+</head>
+
+<body>
+  <nav class="app-nav">
+  
+    
+      <a href="/.">home</a>
+    
+  
+    
+      <a href="/archives">archive</a>
+    
+  
+</nav>
+
+  <main class="post">
+  <article>
+  <h1 class="article-title">
+    <a href="/2017/08/08/32/">centos node 설치</a>
+  </h1>
+
+  <section class="article-meta">
+    <p class="article-date">August 08 2017</p>
+  </section>
+
+  <section class="article-entry">
+    <ol>
+<li><p>EPEL (Extra Packages for Enterprise Linux) repository을 통해 설치<br># yum install epel-release<br># yum install nodejs<br># yum install npm<br><a href="https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-a-centos-7-server" target="_blank" rel="noopener">참조</a></p>
+</li>
+<li><p>소스에서 설치 (비추 : 너무 오래 걸림 약 2~30분 소요)<br><a href="http://haru.kafra.kr/34" target="_blank" rel="noopener">참조링크</a></p>
+</li>
+<li><p>nvm 설치<br><a href="https://github.com/creationix/nvm/releases" target="_blank" rel="noopener">https://github.com/creationix/nvm/releases</a> 에서 버전 확인후 (2017.08.06 현재 v0.33.2)<br><code>curl https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash</code> 실행<br><a href="https://www.liquidweb.com/kb/how-to-install-nvm-node-version-manager-for-node-js-on-centos-7/" target="_blank" rel="noopener">참조 링크</a></p>
+</li>
+</ol>
+<blockquote>
+<p>동시접속 제한풀기<br>/etc/rc.local 파일에<br>ulimit -n 999999 한줄 추가<br><img src="/files/384" alt="image.png"><br> <a href="https://sites.google.com/site/jnjnote/home/tech-read/node-js-w-250k-concurrent-connections" target="_blank" rel="noopener">참조링크</a></p>
+</blockquote>
+
+  </section>
+</article>
+
+  <div class="sharing grid">
+  <section class="profile grid-item grid">
+    <img class="avatar" src="/images/avatar.png" alt="avatar" />
+    <div class="grid-item">
+      <p class="title"> 코딩공작소 </p>
+      <p class="subtitle"> 코딩에 관한 여러가지 방법 모음 : 실제로 설정하면서 해결/처리한 결과 입니다 </p>
+    <div>
+  </section>
+
+  <section class="share-btns">
+    <!-- <p> share it if you like it~ </p> -->
+    <a
+  class="twitter-share-button"
+  data-size="large"
+  data-via="DrakeLeung"
+  href="https://twitter.com/intent/tweet?text=>
+<li><p>EPEL (Extra"
+>
+  Tweet
+</a>
+
+<script>
+  window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  js.async = true;
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));
+</script>
+
+  </section>
+</div>
+
+
+  
+    
+<section class="article-comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+<script>
+  var disqus_shortname = 'flapper_jinn';
+  
+  var disqus_url = 'https://flapper.github.io/2017/08/08/32/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+  
+</main>
+
+</body>
+</html>

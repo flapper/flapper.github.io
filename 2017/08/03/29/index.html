@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>WEB WAS에서 Time out 정리 | 코딩공작소</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/app.css">
+  <!-- <link rel='stylesheet' href='http://fonts.useso.com/css?family=Source+Code+Pro'> -->
+  
+</head>
+
+<body>
+  <nav class="app-nav">
+  
+    
+      <a href="/.">home</a>
+    
+  
+    
+      <a href="/archives">archive</a>
+    
+  
+</nav>
+
+  <main class="post">
+  <article>
+  <h1 class="article-title">
+    <a href="/2017/08/03/29/">WEB WAS에서 Time out 정리</a>
+  </h1>
+
+  <section class="article-meta">
+    <p class="article-date">August 03 2017</p>
+  </section>
+
+  <section class="article-entry">
+    <p><img src="/files/351" alt="image.png"></p>
+<p>Apache나 JBoss EWS 서버의 Timeout은 두가지 구분해서 보아야 한다.</p>
+<ol>
+<li><p>Client의 send 메시지 이후 GET Method가 실제 Apache Listner로 들어오는데 까지의 시간<br>TCP의 3단계 연결 수립이 성공하면 클라이언트와 아파치서버간에는 TCP세션이 생성되고<br>브라우져는 GET 으로 URL Data를 전달하기 위해 send 메시지를 보내고 서버는 준비되었다는 의미로 ACK을 보내게 된다.<br>이때부터 실제 브라우져가 서버로 데이터를 보내는데  예를들어  “GET HTTP 1.1 /index.jsp”  이런 데이터가 전달된다.<br>웹서버에서는 TCP 연결 수 립 후 ACK를 보내고 난 이후 실제 데이터가 들어오는 동안의 시간을 카운트 한다. 만약 어떠한  이유로 Timeout 시간보다 길게 데이터가 들어오지 않는다면 broken pipe가 발생하고 해당 세션은 파기 된다.</p>
+</li>
+<li><p>Reqeust 처리를 위하여 mod_jk로 전달 후 대기하는 시간<br>위의 데이터를 전달 받아서 httpd 엔진이 분석 후 static contents는 자신이 처리한다. 이때 파일을 읽거나 전달 하는데 문제가 발생하는경우(이런 경우는 거의 없지만…doc root 가 NAS 인데 NAS통신에 장애가 있거나…등)  또는 dynamic contents를 WAS로 전달 하기 위해 mod_jk proxy모듈로 전달 하고  이에 대한 처리 값이 돌아오는 시간을 카운트 한다.</p>
+</li>
+</ol>
+<p>이경우 WAS가 처리하는 시간이 Timeout 보다 길어지면 broken pipe가 된다.<br>보통 이런 문제는 WAS가 외부 기관의 인터페이스와 통신하는데 문제가 있거나(실명인증, 포인트조회 등)  내부적으로는 DB에 전달한 쿼리의 수행이 timeout보다 오래 걸리는 등의 원인으로 발생한다.</p>
+<p>일반적으로 웹 시스템은  2~3초 사이에 사용자에게 페이지를 표시해야 하므로<br>Timeout 60 같은 것으 사실 큰 의미는 없다고 보는 사람들이 많다… 사실 정상적으로 동작하는 시스템에서는 그러하다  (대부분의 다른 Timeout도 역시)</p>
+<p>다만 이러한 값 들이 영향을 주는 경우가 있는데 장애상황이거나 서버자원이 부족한 경우 등에서 이다.<br>예를 들어 의미없다고 Timeout 값을 크게 잡고 운영하다가 WAS나 DB, 또는 연계 시스템에 문제가 있어서 응답이 지연되기 시작하면 Timeout이 짧은 시스템의 경우 해당 세션을 날려버리고 새로운 요청을 받아들이지만 (어짜피 처리는 안되지만 안정성 면에서 더 잘 버틴다)<br>길게 셋팅되어 있다면 요청들이 큐잉되다가 결국은 완전히 Hang 상태로 진행 될 수 있다.</p>
+<p>그래서 일반적으로 Timeout 값은 기본 값에서 늘이지도 줄이지도 않는다(장애 발생시 걱정된다고 너무 짧게 잡으면  BI 나 통계시스템같이 오래 걸리는 비지니스가 있는경우 처리가 완료 되기 전에 끊어지는 상황이 될 수 있음)</p>
+<p>다만 keepAlive는 사용자에게 좀 더 부드럽게 처리되는 느낌(?)을 주기 위해 사용하기 때문에 그 시간을 5초 수준까지 줄여도 별 문제가 없고(더 줄이려면 차라리 꺼라) 자원 사용량(netstat -an | grep 80 으로 보면)을 보면 값이 큰 경우보다 자원을 덜 소모하므로 운영에 도움이 된다.</p>
+
+  </section>
+</article>
+
+  <div class="sharing grid">
+  <section class="profile grid-item grid">
+    <img class="avatar" src="/images/avatar.png" alt="avatar" />
+    <div class="grid-item">
+      <p class="title"> 코딩공작소 </p>
+      <p class="subtitle"> 코딩에 관한 여러가지 방법 모음 : 실제로 설정하면서 해결/처리한 결과 입니다 </p>
+    <div>
+  </section>
+
+  <section class="share-btns">
+    <!-- <p> share it if you like it~ </p> -->
+    <a
+  class="twitter-share-button"
+  data-size="large"
+  data-via="DrakeLeung"
+  href="https://twitter.com/intent/tweet?text=<img src="/files/351"
+>
+  Tweet
+</a>
+
+<script>
+  window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  js.async = true;
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));
+</script>
+
+  </section>
+</div>
+
+
+  
+    
+<section class="article-comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+<script>
+  var disqus_shortname = 'flapper_jinn';
+  
+  var disqus_url = 'https://flapper.github.io/2017/08/03/29/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+  
+</main>
+
+</body>
+</html>

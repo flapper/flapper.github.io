@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Eclipse 속도 빠르게 튜닝 | 코딩공작소</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/app.css">
+  <!-- <link rel='stylesheet' href='http://fonts.useso.com/css?family=Source+Code+Pro'> -->
+  
+</head>
+
+<body>
+  <nav class="app-nav">
+  
+    
+      <a href="/.">home</a>
+    
+  
+    
+      <a href="/archives">archive</a>
+    
+  
+</nav>
+
+  <main class="post">
+  <article>
+  <h1 class="article-title">
+    <a href="/2017/12/14/78/">Eclipse 속도 빠르게 튜닝</a>
+  </h1>
+
+  <section class="article-meta">
+    <p class="article-date">December 14 2017</p>
+  </section>
+
+  <section class="article-entry">
+    <h2 id="4G-이상-메모리"><a href="#4G-이상-메모리" class="headerlink" title="4G 이상 메모리"></a>4G 이상 메모리</h2><blockquote>
+<p>osx 기준</p>
+</blockquote>
+<p> <a href="/files/945">eclipse.ini</a> </p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">-startup</span><br><span class="line">../Eclipse/plugins/org.eclipse.equinox.launcher_1.3.100.v20150511-1540.jar</span><br><span class="line">--launcher.library</span><br><span class="line">../Eclipse/plugins/org.eclipse.equinox.launcher.cocoa.macosx.x86_64_1.1.300.v20150602-1417</span><br><span class="line">-product</span><br><span class="line">org.eclipse.epp.package.jee.product</span><br><span class="line">--launcher.defaultAction</span><br><span class="line">openFile</span><br><span class="line">-showsplash</span><br><span class="line">org.eclipse.platform</span><br><span class="line">--launcher.XXMaxPermSize</span><br><span class="line">512m</span><br><span class="line">--launcher.defaultAction</span><br><span class="line">openFile</span><br><span class="line">--launcher.appendVmargs</span><br><span class="line">-vmargs</span><br><span class="line"></span><br><span class="line"> -Dosgi.requiredJavaVersion=1.7</span><br><span class="line">-Xverify:none</span><br><span class="line">-XX:-UseConcMarkSweepGC</span><br><span class="line">-XX:+UseParNewGC</span><br><span class="line">-XX:+AggressiveOpts</span><br><span class="line"></span><br><span class="line"> -XX:PermSize=384M</span><br><span class="line">-XX:MaxPermSize=384m</span><br><span class="line"></span><br><span class="line"> -XX:NewSize=384M</span><br><span class="line">-XX:MaxNewSize=384M</span><br><span class="line"></span><br><span class="line"> -Xms2G</span><br><span class="line">-Xmx2G</span><br><span class="line"></span><br><span class="line"> -XX:+HeapDumpOnOutOfMemoryError</span><br><span class="line">-XX:HeapDumpPath=$CATALINA_BASE/logs</span><br><span class="line">-XX:OnOutOfMemoryError=$CATALINA_HOME/bin/restart.sh</span><br><span class="line"></span><br><span class="line"> -XstartOnFirstThread</span><br><span class="line">-Dorg.eclipse.swt.internal.carbon.smallFonts</span><br><span class="line"></span><br><span class="line"> -Xdock:icon=../Resources/Eclipse.icns</span><br><span class="line">-XstartOnFirstThread</span><br><span class="line">-Dorg.eclipse.swt.internal.carbon.smallFonts</span><br></pre></td></tr></table></figure>
+<h2 id="윈도우는-Eclipse-plugins-를-plugins-로-바꾸면됨"><a href="#윈도우는-Eclipse-plugins-를-plugins-로-바꾸면됨" class="headerlink" title="윈도우는 ../Eclipse/plugins 를 plugins 로 바꾸면됨"></a>윈도우는 ../Eclipse/plugins 를 plugins 로 바꾸면됨</h2> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-startup</span><br><span class="line">plugins/org.eclipse.equinox.launcher_1.3.100.v20150511-1540.jar</span><br><span class="line">--launcher.library</span><br><span class="line">plugins/org.eclipse.equinox.launcher.win32.win32.x86_64_1.1.300.v20150602-1417</span><br></pre></td></tr></table></figure>
+<h2 id="시작안될때-주의점"><a href="#시작안될때-주의점" class="headerlink" title="시작안될때 주의점"></a>시작안될때 주의점</h2><p>-XX:+UseParallelGC 를 빼야함<br>-XX:+UseParNewGC 와 동시에 사용하면 안됨<br><a href="http://www.javaperformancetuning.com/news/qotm026.shtml" target="_blank" rel="noopener">참조링크</a> Young generation garbage collection algorithms 부분 봐야함</p>
+<h2 id="링크"><a href="#링크" class="headerlink" title="링크"></a>링크</h2><p><a href="http://dimdim.tistory.com/entry/Java-GC-%ED%83%80%EC%9E%85-%EB%B0%8F-%EC%84%A4%EC%A0%95-%EC%A0%95%EB%B3%B4-%EC%A0%95%EB%A6%AC" target="_blank" rel="noopener">잘된 설명</a><br><a href="http://d2.naver.com/helloworld/184615" target="_blank" rel="noopener">http 및 Out of memory</a></p>
+<p><a href="https://m.blog.naver.com/PostView.nhn?blogId=sungback&amp;logNo=90097516641&amp;proxyReferer=https%3A%2F%2Fwww.google.co.kr%2F" target="_blank" rel="noopener">참고링크</a><br><a href="http://aroundck.tistory.com/2357" target="_blank" rel="noopener">참고링크</a></p>
+
+  </section>
+</article>
+
+  <div class="sharing grid">
+  <section class="profile grid-item grid">
+    <img class="avatar" src="/images/avatar.png" alt="avatar" />
+    <div class="grid-item">
+      <p class="title"> 코딩공작소 </p>
+      <p class="subtitle"> 코딩에 관한 여러가지 방법 모음 : 실제로 설정하면서 해결/처리한 결과 입니다 </p>
+    <div>
+  </section>
+
+  <section class="share-btns">
+    <!-- <p> share it if you like it~ </p> -->
+    <a
+  class="twitter-share-button"
+  data-size="large"
+  data-via="DrakeLeung"
+  href="https://twitter.com/intent/tweet?text= id="4G-이상-메모리"><a h"
+>
+  Tweet
+</a>
+
+<script>
+  window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  js.async = true;
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));
+</script>
+
+  </section>
+</div>
+
+
+  
+    
+<section class="article-comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+<script>
+  var disqus_shortname = 'flapper_jinn';
+  
+  var disqus_url = 'https://flapper.github.io/2017/12/14/78/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+  
+</main>
+
+</body>
+</html>

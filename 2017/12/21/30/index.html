@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>max_allowed_packet 관련 에러 | 코딩공작소</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/app.css">
+  <!-- <link rel='stylesheet' href='http://fonts.useso.com/css?family=Source+Code+Pro'> -->
+  
+</head>
+
+<body>
+  <nav class="app-nav">
+  
+    
+      <a href="/.">home</a>
+    
+  
+    
+      <a href="/archives">archive</a>
+    
+  
+</nav>
+
+  <main class="post">
+  <article>
+  <h1 class="article-title">
+    <a href="/2017/12/21/30/">max_allowed_packet 관련 에러</a>
+  </h1>
+
+  <section class="article-meta">
+    <p class="article-date">December 21 2017</p>
+  </section>
+
+  <section class="article-entry">
+    <ol>
+<li><p>증상<br>요나 글 저장시<br>아래와 같은 에러 발생</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">[error] play - Cannot invoke the action, eventually got an error: javax.persistence.PersistenceException: ERROR executing DML bindLog[] error[(conn:9874) Could not send query: stre</span><br><span class="line">am size 1552 is &gt;= to max_allowed_packet (1024)]</span><br><span class="line">[error] application -</span><br><span class="line">! @74nc2k2em - Internal server error, for (POST) [/issue/6/edit] -&gt;</span><br><span class="line">play.api.Application$$anon$1: Execution exception[[PersistenceException: ERROR executing DML bindLog[] error[(conn:9874) Could not send query: stream size 1552 is &gt;= to max_allowed</span><br><span class="line">_packet (1024)]]]</span><br><span class="line">        at play.api.Application$class.handleError(Application.scala:296) ~[com.typesafe.play.play_2.10-2.3.10.jar:2.3.10]</span><br><span class="line">        at play.api.DefaultApplication.handleError(Application.scala:402) [com.typesafe.play.play_2.10-2.3.10.jar:2.3.10]</span><br><span class="line">        at play.core.server.netty.PlayDefaultUpstreamHandler$$anonfun$3$$anonfun$applyOrElse$4.apply(PlayDefaultUpstreamHandler.scala:320) [com.typesafe.play.play_2.10-2.3.10.jar:2</span><br><span class="line">.3.10]</span><br><span class="line">        at play.core.server.netty.PlayDefaultUpstreamHandler$$anonfun$3$$anonfun$applyOrElse$4.apply(PlayDefaultUpstreamHandler.scala:320) [com.typesafe.play.play_2.10-2.3.10.jar:2</span><br><span class="line">.3.10]</span><br><span class="line">        at scala.Option.map(Option.scala:145) [org.scala-lang.scala-library-2.10.4.jar:na]</span><br><span class="line">Caused by: javax.persistence.PersistenceException: ERROR executing DML bindLog[] error[(conn:9874) Could not send query: stream size 1552 is &gt;= to max_allowed_packet (1024)]</span><br><span class="line">        at com.avaje.ebeaninternal.server.persist.dml.DmlBeanPersister.execute(DmlBeanPersister.java:97) ~[org.avaje.ebeanorm.avaje-ebeanorm-3.3.4.jar:na]</span><br><span class="line">        at com.avaje.ebeaninternal.server.persist.dml.DmlBeanPersister.insert(DmlBeanPersister.java:57) ~[org.avaje.ebeanorm.avaje-ebeanorm-3.3.4.jar:na]</span><br><span class="line">        at com.avaje.ebeaninternal.server.persist.DefaultPersistExecute.executeInsertBean(DefaultPersistExecute.java:66) ~[org.avaje.ebeanorm.avaje-ebeanorm-3.3.4.jar:na]</span><br><span class="line">        at com.avaje.ebeaninternal.server.core.PersistRequestBean.executeNow(PersistRequestBean.java:448) ~[org.avaje.ebeanorm.avaje-ebeanorm-3.3.4.jar:na]</span><br><span class="line">        at com.avaje.ebeaninternal.server.core.PersistRequestBean.executeOrQueue(PersistRequestBean.java:478) ~[org.avaje.ebeanorm.avaje-ebeanorm-3.3.4.jar:na]</span><br><span class="line">Caused by: java.sql.SQLTransientException: (conn:9874) Could not send query: stream size 1552 is &gt;= to max_allowed_packet (1024)</span><br><span class="line">        at org.mariadb.jdbc.internal.util.ExceptionMapper.get(ExceptionMapper.java:140) ~[org.mariadb.jdbc.mariadb-java-client-1.5.5.jar:na]</span><br><span class="line">        at org.mariadb.jdbc.internal.util.ExceptionMapper.getException(ExceptionMapper.java:101) ~[org.mariadb.jdbc.mariadb-java-client-1.5.5.jar:na]</span><br><span class="line">        at org.mariadb.jdbc.internal.util.ExceptionMapper.throwAndLogException(ExceptionMapper.java:77) ~[org.mariadb.jdbc.mariadb-java-client-1.5.5.jar:na]</span><br><span class="line">        at org.mariadb.jdbc.MariaDbStatement.executeQueryEpilog(MariaDbStatement.java:224) ~[org.mariadb.jdbc.mariadb-java-client-1.5.5.jar:na]</span><br><span class="line">        at org.mariadb.jdbc.MariaDbServerPreparedStatement.executeInternal(MariaDbServerPreparedStatement.java:411) ~[org.mariadb.jdbc.mariadb-java-client-1.5.5.jar:na]</span><br><span class="line">Caused by: org.mariadb.jdbc.internal.util.dao.QueryException: Could not send query: stream size 1552 is &gt;= to max_allowed_packet (1024)</span><br><span class="line">        at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.executePreparedQuery(AbstractQueryProtocol.java:608) ~[org.mariadb.jdbc.mariadb-java-client-1.5.5.jar:na]</span><br><span class="line">        at org.mariadb.jdbc.MariaDbServerPreparedStatement.executeInternal(MariaDbServerPreparedStatement.java:398) ~[org.mariadb.jdbc.mariadb-java-client-1.5.5.jar:na]</span><br><span class="line">        at org.mariadb.jdbc.MariaDbServerPreparedStatement.execute(MariaDbServerPreparedStatement.java:359) ~[org.mariadb.jdbc.mariadb-java-client-1.5.5.jar:na]</span><br><span class="line">        at org.mariadb.jdbc.MariaDbServerPreparedStatement.executeUpdate(MariaDbServerPreparedStatement.java:348) ~[org.mariadb.jdbc.mariadb-java-client-1.5.5.jar:na]</span><br><span class="line">        at com.jolbox.bonecp.PreparedStatementHandle.executeUpdate(PreparedStatementHandle.java:205) ~[com.jolbox.bonecp-0.8.0.RELEASE.jar:na]</span><br><span class="line">Caused by: org.mariadb.jdbc.internal.stream.MaxAllowedPacketException: stream size 1552 is &gt;= to max_allowed_packet (1024)</span><br><span class="line">        at org.mariadb.jdbc.internal.stream.PacketOutputStream.checkPacketMaxSize(PacketOutputStream.java:485) ~[org.mariadb.jdbc.mariadb-java-client-1.5.5.jar:na]</span><br><span class="line">        at org.mariadb.jdbc.internal.stream.PacketOutputStream.finishPacketWithoutRelease(PacketOutputStream.java:415) ~[org.mariadb.jdbc.mariadb-java-client-1.5.5.jar:na]</span><br><span class="line">        at org.mariadb.jdbc.internal.packet.ComStmtExecute.send(ComStmtExecute.java:94) ~[org.mariadb.jdbc.mariadb-java-client-1.5.5.jar:na]</span><br><span class="line">        at org.mariadb.jdbc.internal.protocol.AbstractQueryProtocol.executePreparedQuery(AbstractQueryProtocol.java:601) ~[org.mariadb.jdbc.mariadb-java-client-1.5.5.jar:na]</span><br><span class="line">        at org.mariadb.jdbc.MariaDbServerPreparedStatement.executeInternal(MariaDbServerPreparedStatement.java:398) ~[org.mariadb.jdbc.mariadb-java-client-1.5.5.jar:na]</span><br><span class="line">[info] a./issue/6/edit - 112.221.117.58 - - [27/Jul/2017:23:26:39 +0900] &quot;POST /issue/6/edit HTTP/1.1&quot; 500 - &quot;http://yona.sky12.kr/issue/6/e</span><br><span class="line">ditform&quot; &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36&quot; -</span><br><span class="line">[info] a./messages.js - 112.221.117.58 - flapper [27/Jul/2017:23:26:39 +0900] &quot;GET /messages.js HTTP/1.1&quot; 200 - &quot;http://yona.sky12.kr/issue/6/edit&quot; &quot;Mozilla/5.0 (Ma</span><br><span class="line">cintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36&quot; 7ms</span><br><span class="line">[info] a./user/usermenuTabContentList - 112.221.117.58 - flapper [27/Jul/2017:23:26:39 +0900] &quot;GET /user/usermenuTabContentList HTTP/1.1&quot; 200 - &quot;http://yona.sky12.kr/issue/6/edit&quot; &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36&quot; 60ms</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>원인</p>
+</li>
+<li><p>해결</p>
+</li>
+</ol>
+<ul>
+<li>아래와 같이 설정<br>SET GLOBAL max_allowed_packet = 524288000;</li>
+<li>확인<br>show variables where Variable_name = ‘max_allowed_packet’;</li>
+<li>DB 리스타트<br><code>net stop mysql</code><br><code>net start mysql</code></li>
+</ul>
+
+  </section>
+</article>
+
+  <div class="sharing grid">
+  <section class="profile grid-item grid">
+    <img class="avatar" src="/images/avatar.png" alt="avatar" />
+    <div class="grid-item">
+      <p class="title"> 코딩공작소 </p>
+      <p class="subtitle"> 코딩에 관한 여러가지 방법 모음 : 실제로 설정하면서 해결/처리한 결과 입니다 </p>
+    <div>
+  </section>
+
+  <section class="share-btns">
+    <!-- <p> share it if you like it~ </p> -->
+    <a
+  class="twitter-share-button"
+  data-size="large"
+  data-via="DrakeLeung"
+  href="https://twitter.com/intent/tweet?text=>
+<li><p>증상<br>요나 글 "
+>
+  Tweet
+</a>
+
+<script>
+  window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  js.async = true;
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));
+</script>
+
+  </section>
+</div>
+
+
+  
+    
+<section class="article-comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+<script>
+  var disqus_shortname = 'flapper_jinn';
+  
+  var disqus_url = 'https://flapper.github.io/2017/12/21/30/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+  
+</main>
+
+</body>
+</html>

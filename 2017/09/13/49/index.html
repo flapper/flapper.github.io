@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>동적으로 생성된 html select 태그 change 이벤트 처리 | 코딩공작소</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/app.css">
+  <!-- <link rel='stylesheet' href='http://fonts.useso.com/css?family=Source+Code+Pro'> -->
+  
+</head>
+
+<body>
+  <nav class="app-nav">
+  
+    
+      <a href="/.">home</a>
+    
+  
+    
+      <a href="/archives">archive</a>
+    
+  
+</nav>
+
+  <main class="post">
+  <article>
+  <h1 class="article-title">
+    <a href="/2017/09/13/49/">동적으로 생성된 html select 태그 change 이벤트 처리</a>
+  </h1>
+
+  <section class="article-meta">
+    <p class="article-date">September 13 2017</p>
+  </section>
+
+  <section class="article-entry">
+    <p>정적으로 생성된 경우 아래와 같이 해도 잘되지만<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"#answer_21_input_01"</span>).change(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> value_text = $(<span class="string">"#answer_21_input_01 option:selected"</span>).val();</span><br><span class="line">    <span class="keyword">if</span> (value_text == <span class="string">"직접입력"</span>) &#123;</span><br><span class="line">        $(<span class="string">"#answer_21_input_02"</span>).css(<span class="string">"display"</span>, <span class="string">"inline"</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        $(<span class="string">"#answer_21_input_02"</span>).css(<span class="string">"display"</span>, <span class="string">"none"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>아래 같이 동적으로 생성되면<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">html += <span class="string">'&lt;select name="chchidx" class="answer_select" id="answer_21_2_input_01"&gt;    '</span>;</span><br><span class="line">html += <span class="string">'&lt;option value="0"&gt;선택하세요.&lt;/option&gt;'</span>;</span><br><span class="line">html += <span class="string">'&lt;option value="1"&gt;교사교육&lt;/option&gt;'</span>;</span><br><span class="line">html += <span class="string">'&lt;option value="2"&gt;행정교육&lt;/option&gt;'</span>;</span><br><span class="line">html += <span class="string">'&lt;option value="3"&gt;기타교육&lt;/option&gt;'</span>;</span><br><span class="line">html += <span class="string">'&lt;option value="4"&gt;직접입력&lt;/option&gt;'</span>;</span><br><span class="line">html += <span class="string">'&lt;/select&gt;'</span>;</span><br></pre></td></tr></table></figure></p>
+<p>안 먹힌다 ㅠ</p>
+<p>이럴때 아래와 같이 live 메소드 써야함.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"#answer_21_2_input_01"</span>).live(<span class="string">"change"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> value_text = $(<span class="string">"#answer_21_input_01 option:selected"</span>).val();</span><br><span class="line">    <span class="keyword">if</span> (value_text == <span class="string">"직접입력"</span>) &#123;</span><br><span class="line">        $(<span class="string">"#answer_21_input_02"</span>).css(<span class="string">"display"</span>, <span class="string">"inline"</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        $(<span class="string">"#answer_21_input_02"</span>).css(<span class="string">"display"</span>, <span class="string">"none"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+
+  </section>
+</article>
+
+  <div class="sharing grid">
+  <section class="profile grid-item grid">
+    <img class="avatar" src="/images/avatar.png" alt="avatar" />
+    <div class="grid-item">
+      <p class="title"> 코딩공작소 </p>
+      <p class="subtitle"> 코딩에 관한 여러가지 방법 모음 : 실제로 설정하면서 해결/처리한 결과 입니다 </p>
+    <div>
+  </section>
+
+  <section class="share-btns">
+    <!-- <p> share it if you like it~ </p> -->
+    <a
+  class="twitter-share-button"
+  data-size="large"
+  data-via="DrakeLeung"
+  href="https://twitter.com/intent/tweet?text=정적으로 생성된 경우 아래와 같이 해"
+>
+  Tweet
+</a>
+
+<script>
+  window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  js.async = true;
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));
+</script>
+
+  </section>
+</div>
+
+
+  
+    
+<section class="article-comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+<script>
+  var disqus_shortname = 'flapper_jinn';
+  
+  var disqus_url = 'https://flapper.github.io/2017/09/13/49/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+  
+</main>
+
+</body>
+</html>
