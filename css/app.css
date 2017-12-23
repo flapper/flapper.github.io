@@ -110,8 +110,7 @@ main.index {
     padding: 15px 0 30px 0; }
   main.index .article-title {
     margin: 0;
-    padding-top: 30px;
-  }
+    padding-top: 30px; }
   main.index .article-date {
     color: #aaa; }
   main.index .page-nav {
@@ -135,8 +134,7 @@ main.archive {
     margin-top: 30px; }
   main.archive .article-title {
     margin: 0;
-    font-size: 1.2rem;
-   }
+    font-size: 1.2rem; }
   main.archive .article-meta {
     padding-left: 30px; }
     main.archive .article-meta .article-date {
@@ -252,8 +250,7 @@ main.post {
   .sharing .share-btns > p {
     margin: 15px;
     color: #EB298C;
-    font-style: italic;
-   }
+    font-style: italic; }
 
 .code-block, .article-entry pre, .article-entry .highlight {
   background: #2d2d2d;
